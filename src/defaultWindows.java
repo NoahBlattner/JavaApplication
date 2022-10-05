@@ -1,5 +1,3 @@
-package JAnchorFrame;
-
 import javax.swing.*;
 import java.awt.*;
 
