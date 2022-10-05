@@ -12,9 +12,9 @@ public class JAnchorFrame extends JFrame implements ComponentListener {
     private int prevFrameWidth;
     private int prevFrameHeight;
 
-    private ArrayList<AnchorComponent> anchorComponents;
+    private final ArrayList<AnchorComponent> anchorComponents = new ArrayList<>();
 
-    public JAnchorFrame( String frameName, Rectangle rect) {
+    public JAnchorFrame(String frameName, Rectangle rect) {
         super(frameName);
         this.setBounds(rect);
         prevFrameWidth = rect.getBounds().width;
@@ -45,10 +45,13 @@ public class JAnchorFrame extends JFrame implements ComponentListener {
         for (AnchorComponent currentComponent : anchorComponents) {
             Component component = currentComponent.getComponent();
             switch (currentComponent.getAnchor()) {
+
                 case CENTER:
                 case PROPORTIONAL:
-                component.setLocation(prevFrameWidth / getWidth() * component.getX(),
-                        prevFrameHeight / getHeight() * component.getY());
+                    component.setLocation(  getWidth() / prevFrameWidth * component.getX(),
+                                            getHeight() / prevFrameHeight * component.getY());
+
+
             }
         }
         prevFrameHeight = getHeight();

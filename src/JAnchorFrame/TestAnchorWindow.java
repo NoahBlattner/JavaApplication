@@ -3,16 +3,21 @@ package JAnchorFrame;
 import JAnchorFrame.AnchorComponent.AnchorComponent;
 import JAnchorFrame.AnchorComponent.EAnchor;
 
+Fixed import javax.swing.*;
 import java.awt.*;
 
 public class TestAnchorWindow {
-    AnchorComponent mainButton;
+    Button button;
+    AnchorComponent anchorPanel;
 
     public TestAnchorWindow(String FrameName, Rectangle rect) {
         JAnchorFrame anchorFrame = new JAnchorFrame(FrameName, rect);
 
-        mainButton = new AnchorComponent(new Button("MainButton"), EAnchor.CENTER);
-        mainButton.getComponent().setBounds(50, 50, 150, 150);
-        anchorFrame.add(mainButton.getComponent(), mainButton.getAnchor());
+        Panel panel = new Panel();
+        button = new Button("MainButton");
+        panel.add(button);
+        panel.setBounds(255, 255, 50 , 50);
+        panel.setVisible(true);
+        anchorFrame.addAnchorComponent(panel, EAnchor.PROPORTIONAL);
     }
 }
